@@ -4,8 +4,9 @@ lists = []
 
 def checklist(site):
     for i in site:
-        check_url = requests.get(i,timeout=5)
-        if check_url.status_code!=200:
+        check_url = requests.get(i,timeout=10)
+        print(check_url.status_code)
+        if check_url.status_code!=500:
             print(i+" is down.")
         else:
             print(i+" website is active.")
@@ -27,8 +28,8 @@ def Scrap(site):
 
     # for i in set(lists):
     #     print(i)
-    return set(lists)
+    return list(dict.fromkeys(lists))
 
-urls='https://cbdamericanshaman.com/'
+urls='https://contentmarketinginstitute.com/'
 value = Scrap(urls)
 checklist(value)
